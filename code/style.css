@@ -1,0 +1,119 @@
+*
+{
+  padding: 0%;
+  margin: 0%;
+}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+.container {
+  max-width: 100%;
+  margin: auto;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: larger;
+}
+
+.auth-links a {
+  color: #339cff;
+  text-decoration: none;
+}
+
+main {
+  display: flex;
+  gap: 40px;
+}
+
+.left {
+  flex: 1;
+  margin-left: 70px;
+  margin-top: 80px;
+}
+
+.right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right img {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 12px;
+}
+
+.highlight {
+  color: #339cff;
+}
+
+.input-area {
+  margin-top: 20px;
+  display: flex;
+  gap: 100px;
+  flex-wrap: wrap;
+}
+
+.input-area input[type="text"],
+.input-area input[type="file"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.analyze-btn {
+  margin-top: 40px;
+  padding: 10px 50px;
+  background-color: #339cff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+h1
+{
+  font-size: 50px;
+}
+p{
+  margin-top: 20px;
+  font-size: large;
+}
+
+.text
+{
+  margin-top: 50px;
+  margin-left: 300px;
+  width: 400px;
+  height: 100px;
+}
+.file
+{
+  margin-top: 75px;
+  margin-left: 50px;
+  width: 400px;
+  height: 50px;
+  background-color: white;
+  color: black;
+}
+
+footer
+{
+  padding: 25px;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sentiment IQ</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">Sentiment IQ</div>
+      <div class="auth-links"><a href="#">Login / Signup</a></div>
+    </header>
+
+    <main>
+      <div class="left">
+        <h1>Sentiment IQ: <span class="highlight">Sentiment Analysis Tool</span></h1>
+        <p>
+          Our platform leverages advanced natural language processing (NLP) models like NLTK to analyze public sentiment across social media platforms. Whether you're tracking brand perception, monitoring viral trends, or studying social behavior, our tool delivers accurate, real-time insights into how people really feel.
+        </p>
+        <p>
+          <strong>Technologies or Libraries:</strong> NLTK, Seaborn, Matplotlib, and Flask.
+        </p>
+      </div>
+
+      <div class="right">
+        <img src="sentiment.jpg" alt="Sentiment Analysis UI"/>
+      </div>
+    </main>
+  </div>
+
+  <div class="input-area">
+    <input type="text" id="review" placeholder="Write a sentence here" class="text"/>
+    <input type="file" accept=".txt,.docx" class="file"/>
+  </div>
+
+  <center>
+    <button class="analyze-btn" onclick="predict()">Analyze</button>
+    <h3 id="result"></h3>
+    <footer>
+      <div class="footer-content">
+        <p>&copy; 2023 Sentiment IQ. All rights reserved. <span class="contact">Contact Us</span></p>
+      </div>
+    </footer>
+  </center>
+
+  <script>
+    async function predict() {
+      const review = document.getElementById("review").value;
+      const resultElement = document.getElementById("result");
+      resultElement.innerText = "Analyzing...";
+
+      try {
+        const response = await fetch("http://localhost:5000/predict", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ review: review })
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (data.prediction !== undefined) {
+          resultElement.innerText = "Prediction: " + data.prediction;
+        } else {
+          resultElement.innerText = "Error: Invalid response format from server.";
+        }
+      } catch (error) {
+        console.error("Error during prediction:", error);
+        resultElement.innerText = "Error: Could not get prediction. " + error.message;
+      }
+    }
+  </script>
+</body>
+</html>
